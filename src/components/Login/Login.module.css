@@ -60,10 +60,11 @@
   font-weight: 800;
   color:red;
   opacity: 0;
+  animation-play-state: running;
 }
 @keyframes xyz {
 50%{
-  opacity: 0;
+  
 }
 100%{
   top:50%;
