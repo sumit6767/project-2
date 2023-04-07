@@ -10,12 +10,12 @@ const Login = (props) => {
   const [enteredPassword, setEnteredPassword] = useState('');
   const [passwordIsValid, setPasswordIsValid] = useState();
   const [formIsValid, setFormIsValid] = useState(false);
-  const [collegeIsvalid,setCollegeIsValid] = useState(false)
+  const [collegeIsvalid,setCollegeIsValid] = useState()
   const [collegeName,setCollegeName] = useState('')
 
   useEffect(()=>{
     setFormIsValid(
-      enteredEmail.includes('@') && enteredPassword.trim().length > 6
+      enteredEmail.includes('@') && enteredPassword.trim().length && collegeName.trim().length> 0//
     );
   },[enteredEmail,enteredPassword])
 
@@ -77,7 +77,7 @@ const Login = (props) => {
         </div>
         <div
           className={`${classes.control} ${
-            collegeIsvalid === false ? classes.invalid : ''
+            collegeIsvalid === false ? `${classes.naya}`: ''
           }`}
         >
           <label htmlFor="college">College Name</label>

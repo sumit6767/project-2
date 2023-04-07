@@ -37,10 +37,40 @@
   border-color: #4f005f;
   background: #f6dbfc;
 }
-
-.control.invalid input {
+.control.invalid input{
   border-color: red;
   background: #fbdada;
+}
+.control.naya::after{
+  content: "Form is not valid. Please check that";
+  position: absolute;
+  top:50%;
+  left:0%;
+  width:25%;
+  height:10%;
+  display: flex;
+  justify-content: center;  
+  align-items: center;
+  border-color: red;
+  background: #fbdada;
+  transition: all 1s ease-in-out;
+  animation: xyz 0.5s forwards ease-out;
+  border-radius: 10px;
+  border:2px solid black;
+  font-weight: 800;
+  color:red;
+  opacity: 0;
+}
+@keyframes xyz {
+50%{
+  opacity: 0;
+}
+100%{
+  top:50%;
+  left:50%;
+  transform: translateX(-50%);
+  opacity: 1;
+}
 }
 
 .actions {
