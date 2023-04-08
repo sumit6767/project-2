@@ -1,8 +1,9 @@
-import React, { useEffect, useState,useReducer } from 'react';
-
+import React, { useEffect, useState,useReducer} from 'react';
+import Auth from '../../Context/auth';
 import Card from '../UI/Card/Card';
 import classes from './Login.module.css';
 import Button from '../UI/Button/Button';
+import Input from './Input';
 
 const emailReducer = (state,action)=>{
   if(action.type==="email"){
@@ -33,6 +34,7 @@ const Login = (props) => {
   // const [enteredPassword, setEnteredPassword] = useState('');
   // const [passwordIsValid, setPasswordIsValid] = useState();
   const [formIsValid, setFormIsValid] = useState(false);
+  const context = React.useContext(Auth)
 
   useEffect(()=>{
 
@@ -67,13 +69,13 @@ const Login = (props) => {
 
   const submitHandler = (event) => {
     event.preventDefault();
-    props.onLogin(emailState.email, emailState.password,emailState.college);
+    context.onLogin(emailState.email, emailState.password,emailState.college);
   };
 
   return (
     <Card className={classes.login}>
       <form onSubmit={submitHandler}>
-        <div
+        {/* <div
           className={`${classes.control} ${
             emailState.emailIsValid === false ? classes.invalid : ''
           }`}
@@ -100,7 +102,8 @@ const Login = (props) => {
             onChange={passwordChangeHandler}
             onBlur={validatePasswordHandler}
           />
-        </div>
+        </div> */}
+        <Input emailState = {emailState} emailChangeHandler={emailChangeHandler} passwordChangeHandler={passwordChangeHandler} validateEmailHandler={validateEmailHandler} validatePasswordHandler={validatePasswordHandler}/>
         <div
           className={`${classes.control} ${
             emailState.collegeIsvalid === false ? `${classes.naya}`: ''
